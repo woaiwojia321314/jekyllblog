@@ -1,0 +1,83 @@
+---
+layout: default
+title: Fli's Blog
+---
+<!--page index-->
+<div class="page-index">
+	<!--blogs list-->
+	<ul class="blogs-list">
+		{% for post in site.posts %}
+		<li class="item node clearfix">
+			<h1 class="post-title" property="dc:title" datatype="">
+				<a href="{{ site.baseurl }}{{ post.url }}" class="post-title-link">{{ post.title }}</a>
+			</h1>
+			<div class="post-meta clearfix">
+				<div class="submitted">
+					<span class="release_date">
+						<i class="fa fa-calendar fa-lg"></i>{{ post.date | date_to_string }}
+					</span>
+					<span class="release_author">
+						<i class="fa fa-user fa-lg"></i>fli
+					</span>
+				</div>
+				<div class="tags hidden">tags:</div>
+			</div>
+			<div class="post-body">
+				<p>
+					{{ post.excerpt }}
+				</p>
+			</div>
+			<div class="more">
+				<a href="{{ site.baseurl }}{{ post.url }}" class="btn">
+					阅读全文  »
+				</a>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+	<!--/blogs list-->
+	<!--pagination bar-->
+	<div id="post-pagination" class="pagination">
+		{% if paginator.previous_page %}
+		<p class="previous">
+		{% if paginator.previous_page == 1 %}
+			<a href="/">上一页</a>
+		{% else %}
+			<a href="{{ paginator.previous_page_path }}">上一页</a>
+		{% endif %}
+		</p>
+		{% else %}
+		<p class="previous disabled">
+			<span>上一页</span>
+		</p>
+		{% endif %}
+		<ul class="pages list-inline">
+			<li class="page">
+				{% if paginator.page == 1 %}
+				<span class="current-page">1</span>
+				{% else %}
+				<a href="/">1</a>
+				{% endif %}
+			</li>
+			{% for count in (2..paginator.total_pages) %}
+			<li class="page">
+				{% if count == paginator.page %}
+				<span class="current-page">{{ count }}</span>
+				{% else %}
+				<a href="/page{{ count }}">{{ count }}</a>
+				{% endif %}
+			</li>
+			{% endfor %}
+		</ul>
+		{% if paginator.next_page %}
+		<p class="next">
+			<a href="{{ paginator.next_page_path }}">下一页</a>
+		</p>
+		{% else %}
+		<p class="next disabled">
+			<span>下一页</span>
+		</p>
+		{% endif %}
+	</div>
+	<!--/pagination bar-->
+</div>

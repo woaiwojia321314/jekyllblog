@@ -1,0 +1,64 @@
+<!-- globalheader Fixed -->
+<input type="checkbox" id="menustate" class="menustate hidden">
+<header class="globalheader fixed with-bagview">
+    <nav class="content">
+        <!--menuicon bar-->
+        <ul class="header list-unstyled">
+            <li class="item menuicon">
+                <label class="menuicon-label" for="menustate" aria-hidden="true">
+                    <span class="menuicon-bread menuicon-bread-top">
+                        <span class="menuicon-bread-crust line-top"></span>
+                    </span>
+                    <span class="menuicon-bread menuicon-bread-bottom">
+						<span class="menuicon-bread-crust line-bottom"></span>
+                    </span>
+                </label>
+                <a href="http://lettin.cn/#menustate" class="menuanchor menuanchor-open hidden" id="menuanchor-open">
+                    <span class="menuanchor-label">打开菜单</span>
+                </a>
+                <a href="http://lettin.cn/#" class="menuanchor menuanchor-close hidden" id="menuanchor-close">
+                    <span class="menuanchor-label">关闭菜单</span>
+                </a>
+            </li>
+            <li class="item logo">
+                <a href="index.html" title="home"></a>
+            </li>
+        </ul>
+        <ul class="list" id="header_list">
+            <li class="item item-menu">
+                <a class="link link-index active" href="{{ site.baseurl }}/index.html">
+                    <i class="fa fa-home fa-lg"></i>home
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-categories" href="{{ site.baseurl }}/fixed/categories.html">
+                    <i class="fa fa-book fa-lg"></i>categories
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-archives" href="{{ site.baseurl }}/fixed/archives.html">
+                    <i class="fa fa-calendar fa-lg"></i>archives
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-tags" href="{{ site.baseurl }}/fixed/tags.html">
+                    <i class="fa fa-tags fa-lg"></i>tags
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-about" href="{{ site.baseurl }}/fixed/about.html">
+                    <i class="fa fa-slack fa-lg"></i>about
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-search" href="{{ site.baseurl }}/search">
+                    <i class="fa fa-search fa-lg"></i>search
+                </a>
+            </li>
+        </ul>
+        <!--search panel-->
+        <aside class="search hidden">
+
+        </aside>
+    </nav>
+</header>

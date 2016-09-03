@@ -1,0 +1,32 @@
+---
+layout: default
+title: 分类 | Fli's Blog
+---
+<!--page categories-->
+<div class="page-categories">
+    <div class="cat-all-title">
+        目前共计{{ site.categories.size }}个分类
+    </div>
+    <div class="cat-tree">
+        <ul class="list-inline clearfix">
+            {% for category in site.categories %}
+            <li class="cat-tree-item">
+                <a href="#cat-{{ category | first }}">{{ category | first }}</a>
+                <span>({{ category | last | size }})</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="cat-tree-node">
+        {% for category in site.categories %}
+        <h2 id="cat-{{ category | first }}" class="node-title">{{ category | first }}</h2>
+        <ul class="cat-list">
+            {% for post in category.last %}
+            <li class="cat-list-item">
+                <span class="date">{{ post.date | date:"%d/%m/%Y"}}</span><a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </div>
+</div>

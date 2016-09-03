@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+  <meta name="renderer" content="webkit">
+  <title>js获取客户端真实IP</title>
+
+  
+  <meta name="description" content="java获取客户端程序本身还有对应的对象来实现。而js却不行。搜罗了一些资料，发现比较全而好的前端获取客户端IP的方法基本都是通过三方接口。也就是调用别人写好的接口。用浏览器已有的控件ActiveXObject的控件方式，有一定的兼容性问题。
+
+" />
+  <meta property="og:description" content="java获取客户端程序本身还有对应的对象来实现。而js却不行。搜罗了一些资料，发现比较全而好的前端获取客户端IP的方法基本都是通过三方接口。也就是调用别人写好的接口。用浏览器已有的控件ActiveXObject的控件方式，有一定的兼容性问题。
+
+" />
+  
+  <meta name="author" content="fli" />
+
+  
+  <meta property="og:title" content="js获取客户端真实IP" />
+  <meta property="twitter:title" content="js获取客户端真实IP" />
+  
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="alternate" type="application/rss+xml" title="fli - 狼行千里吃肉，狗行千里吃屎;活鱼逆流而上，死鱼随波逐流！" href="/feed.xml" />
+  <!--hightlight code-->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+  <script type="text/javascript"> hljs.initHighlightingOnLoad(); </script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+
+</head>
+
+  <body>
+    <div class="full-bg-img"></div>
+    <!-- globalheader Fixed -->
+<input type="checkbox" id="menustate" class="menustate hidden">
+<header class="globalheader fixed with-bagview">
+    <nav class="content">
+        <!--menuicon bar-->
+        <ul class="header list-unstyled">
+            <li class="item menuicon">
+                <label class="menuicon-label" for="menustate" aria-hidden="true">
+                    <span class="menuicon-bread menuicon-bread-top">
+                        <span class="menuicon-bread-crust line-top"></span>
+                    </span>
+                    <span class="menuicon-bread menuicon-bread-bottom">
+						<span class="menuicon-bread-crust line-bottom"></span>
+                    </span>
+                </label>
+                <a href="http://lettin.cn/#menustate" class="menuanchor menuanchor-open hidden" id="menuanchor-open">
+                    <span class="menuanchor-label">打开菜单</span>
+                </a>
+                <a href="http://lettin.cn/#" class="menuanchor menuanchor-close hidden" id="menuanchor-close">
+                    <span class="menuanchor-label">关闭菜单</span>
+                </a>
+            </li>
+            <li class="item logo">
+                <a href="index.html" title="home"></a>
+            </li>
+        </ul>
+        <ul class="list" id="header_list">
+            <li class="item item-menu">
+                <a class="link link-index active" href="/index.html">
+                    <i class="fa fa-home fa-lg"></i>home
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-categories" href="/fixed/categories.html">
+                    <i class="fa fa-book fa-lg"></i>categories
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-archives" href="/fixed/archives.html">
+                    <i class="fa fa-calendar fa-lg"></i>archives
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-tags" href="/fixed/tags.html">
+                    <i class="fa fa-tags fa-lg"></i>tags
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-about" href="/fixed/about.html">
+                    <i class="fa fa-slack fa-lg"></i>about
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-search" href="/search">
+                    <i class="fa fa-search fa-lg"></i>search
+                </a>
+            </li>
+        </ul>
+        <!--search panel-->
+        <aside class="search hidden">
+
+        </aside>
+    </nav>
+</header>
+    <!-- main content -->
+    <div class="page" role="page">
+      <div class="container clearfix">
+        <!--main-->
+        <div class="page-inner">
+          <article class="post" id="post">
+  <h1>js获取客户端真实IP</h1>
+  <div class="blog-meta clearfix">
+    <div class="submitted">
+      <span>
+        <i class="fa fa-calendar fa-lg"></i>August 31, 2016
+      </span>
+      <span>
+        <i class="fa fa-user fa-lg"></i>fli
+      </span>
+    </div>
+    <div class="tags hidden">tags:</div>
+  </div>
+  <div class="blog-body">
+    <p>java获取客户端程序本身还有对应的对象来实现。而js却不行。搜罗了一些资料，发现比较全而好的前端获取客户端IP的方法基本都是通过三方接口。也就是调用别人写好的接口。用浏览器已有的控件ActiveXObject的控件方式，有一定的兼容性问题。</p>
+
+<h2 id="section">方法一：（所有的平台及浏览器）</h2>
+<p>使用搜狐接口：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">"http://pv.sohu.com/cityjson?ie=utf-8"</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;
+&lt;script type="text/</span><span class="n">javascript</span><span class="s2">"&gt;
+document.write(returnCitySN["</span><span class="n">cip</span><span class="s2">"]+','+returnCitySN["</span><span class="n">cname</span><span class="s2">"])
+&lt;/script&gt;</span></code></pre></figure>
+
+<h2 id="section-1">方法二：（所有的平台及浏览器）</h2>
+<p>使用新浪接口：(我测试过，此方法好像不行。访问网站也不能访问了。)</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">script</span> <span class="n">type</span><span class="o">=</span><span class="s2">"text/javascript"</span> <span class="n">src</span><span class="o">=</span><span class="s2">"http://counter.sina.com.cn/ip/"</span> <span class="n">charset</span><span class="o">=</span><span class="s2">"gb2312"</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;       &lt;!--获取接口数据，注意charset --&gt;
+&lt;script type="text/</span><span class="n">javascript</span><span class="s2">"&gt;
+document.writeln("</span><span class="no">IP</span><span class="err">地址：</span><span class="s2">"+ILData[0]+"</span><span class="o">&lt;</span><span class="n">br</span> <span class="sr">/&gt;");             /</span><span class="o">/</span><span class="err">输出接口数据中的</span><span class="no">IP</span><span class="err">地址</span>
+<span class="n">document</span><span class="p">.</span><span class="nf">writeln</span><span class="p">(</span><span class="s2">"地址类型："</span><span class="o">+</span><span class="no">ILData</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s2">"&lt;br /&gt;"</span><span class="p">);</span>         <span class="sr">//</span><span class="err">输出接口数据中的</span><span class="no">IP</span><span class="err">地址的类型</span>
+<span class="n">document</span><span class="p">.</span><span class="nf">writeln</span><span class="p">(</span><span class="s2">"地址类型："</span><span class="o">+</span><span class="no">ILData</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s2">"&lt;br /&gt;"</span><span class="p">);</span>         <span class="sr">//</span><span class="err">输出接口数据中的</span><span class="no">IP</span><span class="err">地址的省市</span>
+<span class="n">document</span><span class="p">.</span><span class="nf">writeln</span><span class="p">(</span><span class="s2">"地址类型："</span><span class="o">+</span><span class="no">ILData</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="s2">"&lt;br /&gt;"</span><span class="p">);</span>         <span class="sr">//</span><span class="err">输出接口数据中的</span><span class="no">IP</span><span class="err">地址的</span>
+<span class="n">document</span><span class="p">.</span><span class="nf">writeln</span><span class="p">(</span><span class="s2">"地址类型："</span><span class="o">+</span><span class="no">ILData</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="s2">"&lt;br /&gt;"</span><span class="p">);</span>         <span class="sr">//</span><span class="err">输出接口数据中的</span><span class="no">IP</span><span class="err">地址的运营商</span>
+<span class="o">&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
+
+<h2 id="section-2">方法三：</h2>
+<p>个人Robert Hashemian写的：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">script</span> <span class="n">language</span><span class="o">=</span><span class="s2">"JavaScript"</span> <span class="n">src</span><span class="o">=</span><span class="s2">"http://www.hashemian.com/js/visitorIP.js.php"</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;
+&lt;script language="JavaScript"&gt;
+    VIH_BackColor = "palegreen";
+    VIH_ForeColor = "navy";
+    VIH_FontPix = "16";
+    VIH_DisplayFormat = "You are visiting from:&lt;br&gt;IP Address: %%IP%%&lt;br&gt;Host: %%HOST%%";
+    VIH_DisplayOnPage = "yes";
+&lt;/s</span><span class="n">cript</span><span class="o">&gt;</span></code></pre></figure>
+
+<h2 id="ieieacitivexxpserver032000">方法四：（只针对IE且客户端的IE允许AcitiveX运行，通过平台：XP，SERVER03，2000）。</h2>
+<p>利用ActiveXObject控件，ie浏览器里要开启此控件：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">script</span> <span class="n">language</span><span class="o">=</span><span class="s2">"JavaScript"</span><span class="o">&gt;</span>
+<span class="n">function</span> <span class="no">GetLocalIPAddr</span><span class="p">(){</span> <span class="n">var</span> <span class="n">oSetting</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span> <span class="n">var</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span> <span class="n">try</span><span class="p">{</span> <span class="n">oSetting</span> <span class="o">=</span> <span class="kp">new</span> <span class="no">ActiveXObject</span><span class="p">(</span><span class="s2">"rcbdyctl.Setting"</span><span class="p">);</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">oSetting</span><span class="o">.</span><span class="no">GetIPAddress</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="n">ip</span><span class="p">.</span><span class="nf">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span> <span class="k">return</span> <span class="s2">"没有连接到Internet"</span><span class="p">;</span> <span class="p">}</span> <span class="n">oSetting</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span> <span class="p">}</span><span class="kp">catch</span><span class="p">(</span><span class="n">e</span><span class="p">){</span> <span class="k">return</span> <span class="n">ip</span><span class="p">;</span> <span class="p">}</span> <span class="k">return</span> <span class="n">ip</span><span class="p">;</span> <span class="p">}</span> <span class="n">document</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="no">GetLocalIPAddr</span><span class="p">()</span><span class="o">+</span><span class="s2">"&lt;br/&gt;"</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
+
+<h3 id="section-3">参考</h3>
+<ul>
+  <li><a href="http://www.jb51.net/article/52484.htm">JS获取客户端IP地址、MAC和主机名的7个方法汇总</a></li>
+  <li><a href="http://www.jb51.net/article/43586.htm">js获取客户端外网ip的简单实例</a></li>
+</ul>
+
+  </div>
+  
+</article>
+
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <footer class="globalfooter">
+    <div class="container clearfix">
+        <!-- asidebar -->
+        <div class="asidebar">
+            <div class="avatar">
+                <div class="name"></div>
+                <div class="photo"></div>
+            </div>
+            <div class="about">
+                <p class="nickname">
+                    非礼
+                </p>
+                <p class="signature">
+                    狼行千里吃肉，狗行千里吃屎；<br>活鱼逆流而上，死鱼随波逐流！
+                </p>
+                <p class="qrcode"></p>
+                <p>
+                    <a href="http://woaiwojia321314.github.io" title="">www.missfli.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<a href="https://github.com/barryclark/jekyll-now"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/jekyllrb"><i class="svg-icon twitter"></i></a>
+
+
+
+    <!--js-->
+    <script>
+
+      $(function(){
+        //header click effect
+        $("#header_list a").on("click", function(){
+          var curUrl = window.location.href;
+          console.log(curUrl);
+          //清掉已经加上的active样式
+          $("#header_list a").removeClass("active");
+          if(curUrl.indexOf("index")>-1){
+            $("#header_list .link-index").addClass("active");//首页
+          }else if(curUrl.indexOf("categories")>-1){
+            $("#header_list .link-categories").addClass("active");//分类
+          }else if(curUrl.indexOf("archives")>-1){
+            $("#header_list .link-archives").addClass("active");//归档
+          }else if(curUrl.indexOf("tags")>-1){
+            $("#header_list .link-tags").addClass("active");//标签
+          }else if(curUrl.indexOf("about")>-1){
+            $("#header_list .link-about").addClass("active");//关于
+          }else if(curUrl.indexOf("search")>-1){
+            $("#header_list .link-search").addClass("active");//搜索
+          }else{
+            $("#header_list .link-index").addClass("active");//首页
+          }
+
+        });
+
+      });
+    </script>
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', '{"analytics"=>{"provider"=>"google", "gauges"=>{"site_id"=>"SITE ID"}, "google"=>{"tracking_id"=>"UA-123-12"}, "getclicky"=>{"site_id"=>nil}, "mixpanel"=>{"token"=>"_MIXPANEL_TOKEN_"}, "piwik"=>{"baseURL"=>"myserver.tld/piwik", "idsite"=>"1"}}}', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/frontend/2016/08/31/fetch-customer-id-js.html',
+		  'title': 'js获取客户端真实IP'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  </body>
+</html>

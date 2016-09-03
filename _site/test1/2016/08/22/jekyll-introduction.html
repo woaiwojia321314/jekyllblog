@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+  <meta name="renderer" content="webkit">
+  <title>Jekyll Introduction</title>
+
+  
+  <meta name="description" content="Directly following the intro we’ll learn exactly how Jekyll does what it does.
+
+" />
+  <meta property="og:description" content="Directly following the intro we’ll learn exactly how Jekyll does what it does.
+
+" />
+  
+  <meta name="author" content="fli" />
+
+  
+  <meta property="og:title" content="Jekyll Introduction" />
+  <meta property="twitter:title" content="Jekyll Introduction" />
+  
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="alternate" type="application/rss+xml" title="fli - 狼行千里吃肉，狗行千里吃屎;活鱼逆流而上，死鱼随波逐流！" href="/feed.xml" />
+  <!--hightlight code-->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+  <script type="text/javascript"> hljs.initHighlightingOnLoad(); </script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+
+</head>
+
+  <body>
+    <div class="full-bg-img"></div>
+    <!-- globalheader Fixed -->
+<input type="checkbox" id="menustate" class="menustate hidden">
+<header class="globalheader fixed with-bagview">
+    <nav class="content">
+        <!--menuicon bar-->
+        <ul class="header list-unstyled">
+            <li class="item menuicon">
+                <label class="menuicon-label" for="menustate" aria-hidden="true">
+                    <span class="menuicon-bread menuicon-bread-top">
+                        <span class="menuicon-bread-crust line-top"></span>
+                    </span>
+                    <span class="menuicon-bread menuicon-bread-bottom">
+						<span class="menuicon-bread-crust line-bottom"></span>
+                    </span>
+                </label>
+                <a href="http://lettin.cn/#menustate" class="menuanchor menuanchor-open hidden" id="menuanchor-open">
+                    <span class="menuanchor-label">打开菜单</span>
+                </a>
+                <a href="http://lettin.cn/#" class="menuanchor menuanchor-close hidden" id="menuanchor-close">
+                    <span class="menuanchor-label">关闭菜单</span>
+                </a>
+            </li>
+            <li class="item logo">
+                <a href="index.html" title="home"></a>
+            </li>
+        </ul>
+        <ul class="list" id="header_list">
+            <li class="item item-menu">
+                <a class="link link-index active" href="/index.html">
+                    <i class="fa fa-home fa-lg"></i>home
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-categories" href="/fixed/categories.html">
+                    <i class="fa fa-book fa-lg"></i>categories
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-archives" href="/fixed/archives.html">
+                    <i class="fa fa-calendar fa-lg"></i>archives
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-tags" href="/fixed/tags.html">
+                    <i class="fa fa-tags fa-lg"></i>tags
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-about" href="/fixed/about.html">
+                    <i class="fa fa-slack fa-lg"></i>about
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-search" href="/search">
+                    <i class="fa fa-search fa-lg"></i>search
+                </a>
+            </li>
+        </ul>
+        <!--search panel-->
+        <aside class="search hidden">
+
+        </aside>
+    </nav>
+</header>
+    <!-- main content -->
+    <div class="page" role="page">
+      <div class="container clearfix">
+        <!--main-->
+        <div class="page-inner">
+          <article class="post" id="post">
+  <h1>Jekyll Introduction</h1>
+  <div class="blog-meta clearfix">
+    <div class="submitted">
+      <span>
+        <i class="fa fa-calendar fa-lg"></i>August 22, 2016
+      </span>
+      <span>
+        <i class="fa fa-user fa-lg"></i>fli
+      </span>
+    </div>
+    <div class="tags hidden">tags:</div>
+  </div>
+  <div class="blog-body">
+    <p>Directly following the intro we’ll learn exactly <em>how</em> Jekyll does what it does.</p>
+
+<h2 id="overview">Overview</h2>
+
+<h3 id="what-is-jekyll">What is Jekyll?</h3>
+
+<p>Jekyll is a parsing engine bundled as a ruby gem used to build static websites from
+dynamic components such as templates, partials, liquid code, markdown, etc. Jekyll is known as “a simple, blog aware, static site generator”.
+<img src="/images/jekyll-logo.png" alt="jekyll-logo" /></p>
+
+<h3 id="examples">Examples</h3>
+
+<p>This website is created with Jekyll. <a href="https://github.com/mojombo/jekyll/wiki/Sites">Other Jekyll websites</a>.</p>
+
+<h3 id="what-does-jekyll-do">What does Jekyll Do?</h3>
+
+<p>Jekyll is a ruby gem you install on your local system.
+Once there you can call <code class="highlighter-rouge">jekyll --server</code> on a directory and provided that directory
+is setup in a way jekyll expects, it will do magic stuff like parse markdown/textile files,
+compute categories, tags, permalinks, and construct your pages from layout templates and partials.</p>
+
+<p>Once parsed, Jekyll stores the result in a self-contained static <code class="highlighter-rouge">_site</code> folder.
+The intention here is that you can serve all contents in this folder statically from a plain static web-server.</p>
+
+<p>You can think of Jekyll as a normalish dynamic blog but rather than parsing content, templates, and tags
+on each request, Jekyll does this once <em>beforehand</em> and caches the <em>entire website</em></p>
+
+<h3 id="why-should-i-care">Why Should I Care?</h3>
+
+<p>Therefore if you like to keep things simple and you prefer the command-line over an admin panel UI then give Jekyll a try.</p>
+
+<p><strong>Developers like Jekyll because we can write content like we write code:</strong></p>
+
+<ul>
+  <li>Ability to write content in markdown or textile in your favorite text-editor.</li>
+  <li>Ability to write and preview your content via localhost.</li>
+  <li>No internet connection required.</li>
+  <li>Ability to publish via git.</li>
+  <li>Ability to host your blog on a static web-server.</li>
+  <li>Ability to host freely on GitHub Pages.</li>
+  <li>No database required.</li>
+</ul>
+
+<h1 id="how-jekyll-works">How Jekyll Works</h1>
+
+<p>The following is a complete but concise outline of exactly how Jekyll works.</p>
+
+<p>Be aware that core concepts are introduced in rapid succession without code examples.
+This information is not intended to specifically teach you how to do anything, rather it
+is intended to give you the <em>full picture</em> relative to what is going on in Jekyll-world.</p>
+
+<p>Learning these core concepts should help you avoid common frustrations and ultimately
+help you better understand the code examples contained throughout Jekyll-Bootstrap.</p>
+
+<h2 id="initial-setup">Initial Setup</h2>
+
+<p>After <a href="/index.html#start-now">installing jekyll</a> you’ll need to format your website directory in a way jekyll expects.
+Jekyll-bootstrap conveniently provides the base directory format.</p>
+
+<h3 id="the-jekyll-application-base-format">The Jekyll Application Base Format</h3>
+
+<p>Jekyll expects your website directory to be laid out like so:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span>
+<span class="o">|--</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+<span class="o">|--</span> <span class="n">_includes</span>
+<span class="o">|--</span> <span class="n">_layouts</span>
+<span class="o">|</span>   <span class="o">|--</span> <span class="n">default</span><span class="o">.</span><span class="n">html</span>
+<span class="o">|</span>   <span class="o">|--</span> <span class="n">post</span><span class="o">.</span><span class="n">html</span>
+<span class="o">|--</span> <span class="n">_posts</span>
+<span class="o">|</span>   <span class="o">|--</span> <span class="mi">2011</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">25</span><span class="o">-</span><span class="nb">open</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="ow">is</span><span class="o">-</span><span class="n">good</span><span class="o">.</span><span class="n">markdown</span>
+<span class="o">|</span>   <span class="o">|--</span> <span class="mi">2011</span><span class="o">-</span><span class="mo">04</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="n">hello</span><span class="o">-</span><span class="n">world</span><span class="o">.</span><span class="n">markdown</span>
+<span class="o">|--</span> <span class="n">_site</span>
+<span class="o">|--</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="o">|--</span> <span class="n">assets</span>
+    <span class="o">|--</span> <span class="n">css</span>
+        <span class="o">|--</span> <span class="n">style</span><span class="o">.</span><span class="n">css</span>
+    <span class="o">|--</span> <span class="n">javascripts</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p><strong>_config.yml</strong>
+  Stores configuration data.</p>
+  </li>
+  <li>
+    <p><strong>_includes</strong>
+  This folder is for partial views.</p>
+  </li>
+  <li>
+    <p><strong>_layouts</strong>
+  This folder is for the main templates your content will be inserted into.
+  You can have different layouts for different pages or page sections.</p>
+  </li>
+  <li>
+    <p><strong>_posts</strong>
+  This folder contains your dynamic content/posts.
+  the naming format is required to be <code class="highlighter-rouge">@YEAR-MONTH-DATE-title.MARKUP@</code>.</p>
+  </li>
+  <li>
+    <p><strong>_site</strong>
+  This is where the generated site will be placed once Jekyll is done transforming it.</p>
+  </li>
+  <li>
+    <p><strong>assets</strong>
+  This folder is not part of the standard jekyll structure.
+  The assets folder represents <em>any generic</em> folder you happen to create in your root directory.
+  Directories and files not properly formatted for jekyll will be left untouched for you to serve normally.</p>
+  </li>
+</ul>
+
+<p>(read more: <a href="https://github.com/mojombo/jekyll/wiki/Usage">https://github.com/mojombo/jekyll/wiki/Usage</a>)</p>
+
+<h3 id="jekyll-configuration">Jekyll Configuration</h3>
+
+<p>Jekyll supports various configuration options that are fully outlined here:
+(<a href="https://github.com/mojombo/jekyll/wiki/Configuration">https://github.com/mojombo/jekyll/wiki/Configuration</a>)</p>
+
+<h3 id="working-with-posts">Working With Posts</h3>
+
+<p><strong>Creating a Post</strong>
+Posts are created by properly formatting a file and placing it the <code class="highlighter-rouge">_posts</code> folder.</p>
+
+<p><strong>Formatting</strong>
+If the data format is invalid Jekyll will not recognize the file as a post. The date and title are automatically parsed from the filename of the post file.
+Additionally, each file must have <a href="https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter">YAML Front-Matter</a> prepended to its content.
+YAML Front-Matter is a valid YAML syntax specifying meta-data for the given file.</p>
+
+<p><strong>Categories</strong>
+Posts may be categorized by providing one or more categories in the YAML front matter.
+Categories offer more significance over tags in that they can be reflected in the URL path to the given post.
+Note categories in Jekyll work in a specific way.
+If you define more than one category you are defining a category hierarchy “set”.
+Example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+title :  Hello World
+categories : [lessons, beginner]
+---
+</code></pre>
+</div>
+
+<p>This defines the category hierarchy “lessons/beginner”. Note this is <em>one category</em> node in Jekyll.
+You won’t find “lessons” and “beginner” as two separate categories unless you define them elsewhere as singular categories.</p>
+
+<h3 id="working-with-pages">Working With Pages</h3>
+
+<p><strong>Creating a Page</strong>
+Pages are created by properly formatting a file and placing it anywhere in the root directory or subdirectories that do <em>not</em> start with an underscore.</p>
+
+<p><strong>Formatting</strong>
+In order to register as a Jekyll page the file must contain <a href="https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter">YAML Front-Matter</a>.
+Registering a page means 1) that Jekyll will process the page and 2) that the page object will be available in the <code class="highlighter-rouge">site.pages</code> array for inclusion into your templates.</p>
+
+<p><strong>Categories and Tags</strong>
+Pages do not compute categories nor tags so defining them will have no effect.</p>
+
+<p><strong>Sub-Directories</strong>
+If pages are defined in sub-directories, the path to the page will be reflected in the url.
+Example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.
+|-- people
+    |-- bob
+        |-- essay.html
+</code></pre>
+</div>
+
+<p>This page will be available at <code class="highlighter-rouge">http://yourdomain.com/people/bob/essay.html</code></p>
+
+<p><strong>Recommended Pages</strong></p>
+
+<ul>
+  <li><strong>index.html</strong>
+You will always want to define the root index.html page as this will display on your root URL.</li>
+  <li><strong>404.html</strong>
+Create a root 404.html page and GitHub Pages will serve it as your 404 response.</li>
+  <li><strong>sitemap.html</strong>
+Generating a sitemap is good practice for SEO.</li>
+  <li><strong>about.html</strong>
+A nice about page is easy to do and gives the human perspective to your website.</li>
+</ul>
+
+<h2 id="templates-in-jekyll">Templates in Jekyll</h2>
+
+<p>Templates are used to contain a page’s or post’s content.
+All templates have access to a global site object variable: <code class="highlighter-rouge">site</code> as well as a page</p>
+
+<p><strong>Create a Template</strong>
+Templates are created by properly formatting a file and placing it in the <code class="highlighter-rouge">_layouts</code> directory.</p>
+
+<p><strong>Formatting</strong>
+Templates should be coded in HTML and contain YAML Front Matter.
+All templates can contain Liquid code to work with your site’s data.</p>
+
+<p><strong>Rending Page/Post Content in a Template</strong>
+There is a special variable in all templates named : <code class="highlighter-rouge">content</code>.
+The <code class="highlighter-rouge">content</code> variable holds the page/post content including any sub-template content</p>
+
+<h2 id="using-liquid-for-templating">Using Liquid for Templating</h2>
+
+<p>Templating is perhaps the most confusing and frustrating part of Jekyll.
+This is mainly due to the fact that Jekyll templates must use the Liquid Templating Language.</p>
+
+<h3 id="what-is-liquid">What is Liquid?</h3>
+
+<p><a href="https://github.com/Shopify/liquid">Liquid</a> is a secure templating language developed by <a href="http://shopify.com">Shopify</a>.
+Liquid is designed for end-users to be able to execute logic within template files</p>
+
+<h3 id="why-do-we-have-to-use-liquid">Why Do We Have to Use Liquid?</h3>
+
+<p>GitHub uses Jekyll to power <a href="http://pages.github.com/">GitHub Pages</a>.
+GitHub cannot afford to run arbitrary code on their servers so they lock developers down via Liquid.</p>
+
+<h3 id="liquid-is-not-programmer-friendly">Liquid is Not Programmer-Friendly.</h3>
+
+<p>The short story is liquid is not real code and its not intended to execute real code.
+The point being you can’t do jackshit in liquid that hasn’t been allowed explicitly</p>
+
+<p><strong>Aside</strong>
+My personal stance is to not invest time trying to hack liquid. It’s really unnecessary
+<em>from a programmer’s</em> perspective. That is to say if you have the ability to run custom plugins (i.e. run arbitrary ruby code)
+you are better off sticking with ruby. Toward that end I’ve built <a href="http://github.com/plusjade/mustache-with-jekyll">Mustache-with-Jekyll</a></p>
+
+<h2 id="how-jekyll-parses-files">How Jekyll Parses Files</h2>
+
+<p>Remember Jekyll is a processing engine. There are two main types of parsing in Jekyll.</p>
+
+<ul>
+  <li><strong>Content parsing.</strong>
+  This is done with textile or markdown.</li>
+  <li><strong>Template parsing.</strong>
+This is done with the liquid templating language.</li>
+</ul>
+
+<p>And thus there are two main types of file formats needed for this parsing.</p>
+
+<ul>
+  <li><strong>Post and Page files.</strong>
+All content in Jekyll is either a post or a page so valid posts and pages are parsed with markdown or textile.</li>
+  <li><strong>Template files.</strong>
+  These files go in <code class="highlighter-rouge">_layouts</code> folder and contain your blogs <strong>templates</strong>. They should be made in HTML with the help of Liquid syntax.
+  Since include files are simply injected into templates they are essentially parsed as if they were native to the template.</li>
+</ul>
+
+<p><strong>Arbitrary files and folders.</strong>
+Files that <em>are not</em> valid pages are treated as static content and pass through
+Jekyll untouched and reside on your blog in the exact structure and format they originally existed in.</p>
+
+<h3 id="formatting-files-for-parsing">Formatting Files for Parsing.</h3>
+
+<p>We’ve outlined the need for valid formatting using <strong>YAML Front Matter</strong>.
+Templates, posts, and pages all need to provide valid YAML Front Matter even if the Matter is empty.
+This is the only way Jekyll knows you want the file processed.</p>
+
+<p>YAML Front Matter must be prepended to the top of template/post/page files:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+layout: post
+category : pages
+tags : [how-to, jekyll]
+---
+
+... contents ...
+</code></pre>
+</div>
+
+<p>Three hyphens on a new line start the Front-Matter block and three hyphens on a new line end the block.
+The data inside the block must be valid YAML.</p>
+
+<p>Configuration parameters for YAML Front-Matter is outlined here:
+<a href="https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter">A comprehensive explanation of YAML Front Matter</a></p>
+
+<h4 id="defining-layouts-for-posts-and-templates-parsing">Defining Layouts for Posts and Templates Parsing.</h4>
+
+<p>The <code class="highlighter-rouge">layout</code> parameter in the YAML Front Matter defines the template file for which the given post or template should be injected into.
+If a template file specifies its own layout, it is effectively being used as a <code class="highlighter-rouge">sub-template.</code></p>
+<h2 id="how-jekyll-generates-the-final-static-files">How Jekyll Generates the Final Static Files.</h2>
+
+<p>Ultimately, Jekyll’s job is to generate a static representation of your website.
+The following is an outline of how that’s done:</p>
+
+<ol>
+  <li>
+    <p><strong>Jekyll collects data.</strong>
+  Jekyll scans the posts directory and collects all posts files as post objects. It then scans the layout assets and collects those and finally scans other directories in search of pages.</p>
+  </li>
+  <li>
+    <p><strong>Jekyll computes data.</strong>
+  Jekyll takes these objects, computes metadata (permalinks, tags, categories, titles, dates) from them and constructs one
+  big <code class="highlighter-rouge">site</code> object that holds all the posts, pages, layouts, and respective metadata.
+  At this stage your site is one big computed ruby object.</p>
+  </li>
+  <li>
+    <p><strong>Jekyll liquifies posts and templates.</strong>
+  Next jekyll loops through each post file and converts (through markdown or textile) and <strong>liquifies</strong> the post inside of its respective layout(s).
+  Once the post is parsed and liquified inside the the proper layout structure, the layout itself is “liquified”.
+ <strong>Liquification</strong> is defined as follows: Jekyll initiates a Liquid template, and passes a simpler hash representation of the ruby site object as well as a simpler
+  hash representation of the ruby post object. These simplified data structures are what you have access to in the templates.</p>
+  </li>
+  <li>
+    <p><strong>Jekyll generates output.</strong>
+ Finally the liquid templates are “rendered”, thereby processing any liquid syntax provided in the templates
+ and saving the final, static representation of the file.</p>
+  </li>
+</ol>
+
+<p><strong>Notes.</strong>
+a global <code class="highlighter-rouge">site</code> hash that contains useful data. It is this data that you’ll iterate through and format</p>
+
+<p>Remember, in Jekyll you are an end-user. Your API has only two components:</p>
+
+<ol>
+  <li>The manner in which you setup your directory.</li>
+  <li>The liquid syntax and variables passed into the liquid templates.</li>
+</ol>
+
+<p>All the data objects available to you in the templates via Liquid are outlined in the <strong>API Section</strong> of Jekyll-Bootstrap.
+You can also read the original documentation here: <a href="https://github.com/mojombo/jekyll/wiki/Template-Data">https://github.com/mojombo/jekyll/wiki/Template-Data</a></p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p><strong>Thank you</strong> for reading this far.
+Please take a look at <a href=""></a>
+or jump right into <a href="">Usage</a> if you’d like.</p>
+
+<h4 id="references">参考references</h4>
+<ul>
+  <li><a href="http://www.baidu.com">参考链接1</a></li>
+  <li><a href="http://www.baidu.com">参考链接1</a></li>
+  <li><a href="http://www.baidu.com">参考链接1</a></li>
+  <li><a href="http://www.baidu.com">参考链接1</a></li>
+</ul>
+
+  </div>
+  
+</article>
+
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <footer class="globalfooter">
+    <div class="container clearfix">
+        <!-- asidebar -->
+        <div class="asidebar">
+            <div class="avatar">
+                <div class="name"></div>
+                <div class="photo"></div>
+            </div>
+            <div class="about">
+                <p class="nickname">
+                    非礼
+                </p>
+                <p class="signature">
+                    狼行千里吃肉，狗行千里吃屎；<br>活鱼逆流而上，死鱼随波逐流！
+                </p>
+                <p class="qrcode"></p>
+                <p>
+                    <a href="http://woaiwojia321314.github.io" title="">www.missfli.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<a href="https://github.com/barryclark/jekyll-now"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/jekyllrb"><i class="svg-icon twitter"></i></a>
+
+
+
+    <!--js-->
+    <script>
+
+      $(function(){
+        //header click effect
+        $("#header_list a").on("click", function(){
+          var curUrl = window.location.href;
+          console.log(curUrl);
+          //清掉已经加上的active样式
+          $("#header_list a").removeClass("active");
+          if(curUrl.indexOf("index")>-1){
+            $("#header_list .link-index").addClass("active");//首页
+          }else if(curUrl.indexOf("categories")>-1){
+            $("#header_list .link-categories").addClass("active");//分类
+          }else if(curUrl.indexOf("archives")>-1){
+            $("#header_list .link-archives").addClass("active");//归档
+          }else if(curUrl.indexOf("tags")>-1){
+            $("#header_list .link-tags").addClass("active");//标签
+          }else if(curUrl.indexOf("about")>-1){
+            $("#header_list .link-about").addClass("active");//关于
+          }else if(curUrl.indexOf("search")>-1){
+            $("#header_list .link-search").addClass("active");//搜索
+          }else{
+            $("#header_list .link-index").addClass("active");//首页
+          }
+
+        });
+
+      });
+    </script>
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', '{"analytics"=>{"provider"=>"google", "gauges"=>{"site_id"=>"SITE ID"}, "google"=>{"tracking_id"=>"UA-123-12"}, "getclicky"=>{"site_id"=>nil}, "mixpanel"=>{"token"=>"_MIXPANEL_TOKEN_"}, "piwik"=>{"baseURL"=>"myserver.tld/piwik", "idsite"=>"1"}}}', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/test1/2016/08/22/jekyll-introduction.html',
+		  'title': 'Jekyll Introduction'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  </body>
+</html>

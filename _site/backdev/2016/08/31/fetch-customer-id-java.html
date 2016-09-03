@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+  <meta name="renderer" content="webkit">
+  <title>java获取客户端真实IP（转载）</title>
+
+  
+  <meta name="description" content="有时候希望记录用户登录ip，用于获取他的登录地址。网上搜了很多资料，发现常用的1种方式比较全面而实用的方式：request获取。
+
+" />
+  <meta property="og:description" content="有时候希望记录用户登录ip，用于获取他的登录地址。网上搜了很多资料，发现常用的1种方式比较全面而实用的方式：request获取。
+
+" />
+  
+  <meta name="author" content="fli" />
+
+  
+  <meta property="og:title" content="java获取客户端真实IP（转载）" />
+  <meta property="twitter:title" content="java获取客户端真实IP（转载）" />
+  
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="alternate" type="application/rss+xml" title="fli - 狼行千里吃肉，狗行千里吃屎;活鱼逆流而上，死鱼随波逐流！" href="/feed.xml" />
+  <!--hightlight code-->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+  <script type="text/javascript"> hljs.initHighlightingOnLoad(); </script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+
+</head>
+
+  <body>
+    <div class="full-bg-img"></div>
+    <!-- globalheader Fixed -->
+<input type="checkbox" id="menustate" class="menustate hidden">
+<header class="globalheader fixed with-bagview">
+    <nav class="content">
+        <!--menuicon bar-->
+        <ul class="header list-unstyled">
+            <li class="item menuicon">
+                <label class="menuicon-label" for="menustate" aria-hidden="true">
+                    <span class="menuicon-bread menuicon-bread-top">
+                        <span class="menuicon-bread-crust line-top"></span>
+                    </span>
+                    <span class="menuicon-bread menuicon-bread-bottom">
+						<span class="menuicon-bread-crust line-bottom"></span>
+                    </span>
+                </label>
+                <a href="http://lettin.cn/#menustate" class="menuanchor menuanchor-open hidden" id="menuanchor-open">
+                    <span class="menuanchor-label">打开菜单</span>
+                </a>
+                <a href="http://lettin.cn/#" class="menuanchor menuanchor-close hidden" id="menuanchor-close">
+                    <span class="menuanchor-label">关闭菜单</span>
+                </a>
+            </li>
+            <li class="item logo">
+                <a href="index.html" title="home"></a>
+            </li>
+        </ul>
+        <ul class="list" id="header_list">
+            <li class="item item-menu">
+                <a class="link link-index active" href="/index.html">
+                    <i class="fa fa-home fa-lg"></i>home
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-categories" href="/fixed/categories.html">
+                    <i class="fa fa-book fa-lg"></i>categories
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-archives" href="/fixed/archives.html">
+                    <i class="fa fa-calendar fa-lg"></i>archives
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-tags" href="/fixed/tags.html">
+                    <i class="fa fa-tags fa-lg"></i>tags
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-about" href="/fixed/about.html">
+                    <i class="fa fa-slack fa-lg"></i>about
+                </a>
+            </li>
+            <li class="item item-menu">
+                <a class="link link-search" href="/search">
+                    <i class="fa fa-search fa-lg"></i>search
+                </a>
+            </li>
+        </ul>
+        <!--search panel-->
+        <aside class="search hidden">
+
+        </aside>
+    </nav>
+</header>
+    <!-- main content -->
+    <div class="page" role="page">
+      <div class="container clearfix">
+        <!--main-->
+        <div class="page-inner">
+          <article class="post" id="post">
+  <h1>java获取客户端真实IP（转载）</h1>
+  <div class="blog-meta clearfix">
+    <div class="submitted">
+      <span>
+        <i class="fa fa-calendar fa-lg"></i>August 31, 2016
+      </span>
+      <span>
+        <i class="fa fa-user fa-lg"></i>fli
+      </span>
+    </div>
+    <div class="tags hidden">tags:</div>
+  </div>
+  <div class="blog-body">
+    <p>有时候希望记录用户登录ip，用于获取他的登录地址。网上搜了很多资料，发现常用的1种方式比较全面而实用的方式：request获取。</p>
+
+<p>转载自<a href="http://www.cnblogs.com/ITtangtang/p/3927768.html"><strong>Java获取客户端IP</strong></a></p>
+
+<h2 id="request">request获取方式</h2>
+
+<p>在开发工作中,我们常常需要获取客户端的IP。一般获取客户端的IP地址的方法是: <strong>request.getRemoteAddr()</strong> ;但是在通过了Apache,Squid等反向代理软件就不能获取到客户端的真实IP地址了。</p>
+
+<p>原因:</p>
+
+<p>由于在客户端和服务之间增加了中间代理,因此服务器无法直接拿到客户端的IP,服务器端应用也无法直接通过转发请求的地址返回给客户端。</p>
+
+<p><strong>现在图示代理上网和IP的关系：</strong></p>
+
+<p><em>第一种情况：不通过代理上网,服务器端拿到真实IP</em></p>
+
+<p><img src="/images/fetch-customer-id-01.png" alt="fetch-customer-id-01" /></p>
+
+<p><em>第二种情况：通过代理服务器如:Nginx,Squid等一层代理或多层代理上网，如下图:</em></p>
+
+<p><img src="/images/fetch-customer-id-02.png" alt="fetch-customer-id-02" /></p>
+
+<p>需要注意的是X-Forwarded-For和X-Real-IP都不是http的正式协议头，而是squid等反向代理软件最早引入的，之所以resin能拿到，是因为NGINX里一般缺省都会这么配置转发的http请求：</p>
+
+<ul>
+  <li>
+    <p><strong>proxy_pass       http://yourdomain.com;</strong></p>
+  </li>
+  <li>
+    <p><strong>proxy_set_header   Host             $host;</strong></p>
+  </li>
+  <li>
+    <p><strong>proxy_set_header   X-Real-IP        $remote_addr;</strong></p>
+  </li>
+  <li>
+    <p><strong>proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</strong></p>
+  </li>
+</ul>
+
+<p>从X-Forwarded-For的定义来看，ips[0]才是原始客户端ip，如果这个都不是，那拿第二个就更不靠谱了，我们平时检验的时候，可能是直接在内网挂代理去访问的，跟外面网友访问经过的网络路径不一样，后面不停添加的是经过的每一层代理ip才对,下面举例说明;</p>
+
+<ul>
+  <li>
+    <p><strong>request.getRemoteAddr() 192.168.239.196</strong></p>
+  </li>
+  <li>
+    <p><strong>request.getHeader(“X-Forwarded-For”) 58.63.227.162, 192.168.237.178, 192.168.238.218</strong></p>
+  </li>
+  <li>
+    <p><strong>request.getHeader(“X-Real-IP”) 192.168.238.218</strong></p>
+  </li>
+</ul>
+
+<p>所以访问的流程应该是这样，客户端58.63.227.162发出请求，经过192.168.237.178, 192.168.238.218两层转发，到了192.168.239.196这台NGINX上，NGINX就把X-Real-IP头设成了自己看到的remote_addr，也就是直接发给到他的192.168.238.218，这时候resin收到这个包，对resin来说直接发给他的remote_addr就是NGINX的ip，也就是192.168.239.196，那么resin里面的request.getRemoteAddr()就是192.168.239.196，那么在resin里拿最原始的ip逻辑（也就是拿能够知道的最外层的ip）应该是这样：</p>
+
+<ol>
+  <li>
+    <p><strong>如果XFF不为空，拿XFF的左边第一个</strong></p>
+  </li>
+  <li>
+    <p><strong>如果XFF为空，拿XRI</strong></p>
+  </li>
+  <li>
+    <p><strong>如果XRI为空，只能拿request.getRemoteAddr()，也就是只能拿到最直接发给他的机器ip了，</strong></p>
+  </li>
+</ol>
+
+<p>其他都不可考究,参考代码如下(已经封装成一个工具类)：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">package</span> <span class="n">com</span><span class="p">.</span><span class="nf">le</span><span class="p">.</span><span class="nf">util</span><span class="p">;</span>
+
+<span class="n">import</span> <span class="n">javax</span><span class="p">.</span><span class="nf">servlet</span><span class="p">.</span><span class="nf">http</span><span class="o">.</span><span class="no">HttpServletRequest</span><span class="p">;</span>
+
+<span class="kp">public</span> <span class="k">class</span> <span class="nc">IPFetch</span> <span class="p">{</span>
+
+	<span class="sr">/**
+	 * fetch customer real ip
+	 * @param request
+	 * @return string
+	 */</span>
+	<span class="kp">public</span> <span class="n">static</span> <span class="no">String</span> <span class="n">getRealIp</span><span class="p">(</span><span class="no">HttpServletRequest</span> <span class="n">request</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="no">String</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">getHeader</span><span class="p">(</span><span class="s2">"X-Forwarded-For"</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">isNotEmpty</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="s2">"unKnown"</span><span class="p">.</span><span class="nf">equalsIgnoreCase</span><span class="p">(</span><span class="n">ip</span><span class="p">)){</span>
+            <span class="sr">//</span><span class="err">多次反向代理后会有多个</span><span class="n">ip</span><span class="err">值，第一个</span><span class="n">ip</span><span class="err">才是真实</span><span class="n">ip</span>
+            <span class="n">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">ip</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="s2">","</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+                <span class="k">return</span> <span class="n">ip</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">index</span><span class="p">);</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="k">return</span> <span class="n">ip</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">getHeader</span><span class="p">(</span><span class="s2">"X-Real-IP"</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">isNotEmpty</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="s2">"unKnown"</span><span class="p">.</span><span class="nf">equalsIgnoreCase</span><span class="p">(</span><span class="n">ip</span><span class="p">)){</span>
+            <span class="k">return</span> <span class="n">ip</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">request</span><span class="p">.</span><span class="nf">getRemoteAddr</span><span class="p">();</span>
+    <span class="p">}</span><span class="o">/</span><span class="sr">/method
+
+	/</span><span class="o">**</span>
+	 <span class="o">*</span> <span class="no">Check</span> <span class="n">whether</span> <span class="n">string</span> <span class="n">is</span> <span class="n">empty</span>
+	 <span class="o">*</span> <span class="vi">@param</span> <span class="n">str</span> <span class="no">String</span>
+	 <span class="o">*</span> <span class="vi">@return</span> <span class="n">boolean</span>
+	 <span class="o">*</span><span class="sr">/
+	public static boolean isNotEmpty(String str) {
+		return !(str == null || str.length() == 0);
+	}/</span><span class="o">/</span><span class="nb">method</span>
+
+<span class="p">}</span></code></pre></figure>
+
+
+  </div>
+  
+</article>
+
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <footer class="globalfooter">
+    <div class="container clearfix">
+        <!-- asidebar -->
+        <div class="asidebar">
+            <div class="avatar">
+                <div class="name"></div>
+                <div class="photo"></div>
+            </div>
+            <div class="about">
+                <p class="nickname">
+                    非礼
+                </p>
+                <p class="signature">
+                    狼行千里吃肉，狗行千里吃屎；<br>活鱼逆流而上，死鱼随波逐流！
+                </p>
+                <p class="qrcode"></p>
+                <p>
+                    <a href="http://woaiwojia321314.github.io" title="">www.missfli.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<a href="https://github.com/barryclark/jekyll-now"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/jekyllrb"><i class="svg-icon twitter"></i></a>
+
+
+
+    <!--js-->
+    <script>
+
+      $(function(){
+        //header click effect
+        $("#header_list a").on("click", function(){
+          var curUrl = window.location.href;
+          console.log(curUrl);
+          //清掉已经加上的active样式
+          $("#header_list a").removeClass("active");
+          if(curUrl.indexOf("index")>-1){
+            $("#header_list .link-index").addClass("active");//首页
+          }else if(curUrl.indexOf("categories")>-1){
+            $("#header_list .link-categories").addClass("active");//分类
+          }else if(curUrl.indexOf("archives")>-1){
+            $("#header_list .link-archives").addClass("active");//归档
+          }else if(curUrl.indexOf("tags")>-1){
+            $("#header_list .link-tags").addClass("active");//标签
+          }else if(curUrl.indexOf("about")>-1){
+            $("#header_list .link-about").addClass("active");//关于
+          }else if(curUrl.indexOf("search")>-1){
+            $("#header_list .link-search").addClass("active");//搜索
+          }else{
+            $("#header_list .link-index").addClass("active");//首页
+          }
+
+        });
+
+      });
+    </script>
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', '{"analytics"=>{"provider"=>"google", "gauges"=>{"site_id"=>"SITE ID"}, "google"=>{"tracking_id"=>"UA-123-12"}, "getclicky"=>{"site_id"=>nil}, "mixpanel"=>{"token"=>"_MIXPANEL_TOKEN_"}, "piwik"=>{"baseURL"=>"myserver.tld/piwik", "idsite"=>"1"}}}', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/backdev/2016/08/31/fetch-customer-id-java.html',
+		  'title': 'java获取客户端真实IP（转载）'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  </body>
+</html>

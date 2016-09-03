@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+  <meta name="renderer" content="webkit">
+  <title>{% if page.title %}{{ page.title }}{% endif %}</title>
+
+  {% if page.excerpt %}
+  <meta name="description" content="{{ page.excerpt| strip_html }}" />
+  <meta property="og:description" content="{{ page.excerpt| strip_html }}" />
+  {% else %}
+  <meta name="description" content="{{ site.description }}">
+  <meta property="og:description" content="{{ site.description }}" />
+  {% endif %}
+  <meta name="author" content="{{ site.name }}" />
+
+  {% if page.title %}
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="twitter:title" content="{{ page.title }}" />
+  {% endif %}
+
+  <link rel="icon" type="image/x-icon" href="{{ site.url }}/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ site.url }}/favicon.ico">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ site.url }}/css/common.css">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  <!--hightlight code-->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+  <script type="text/javascript"> hljs.initHighlightingOnLoad(); </script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+
+</head>
+
+  <body>
+    <div class="full-bg-img"></div>
+    {% include header.html %}
+    <!-- main content -->
+    <div class="page" role="page">
+      <div class="container clearfix">
+        <!--main-->
+        <div class="page-inner">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    {% include footer.html %}
+    <!--js-->
+    <script>
+
+      $(function(){
+        //header click effect
+        $("#header_list a").on("click", function(){
+          var curUrl = window.location.href;
+          console.log(curUrl);
+          //清掉已经加上的active样式
+          $("#header_list a").removeClass("active");
+          if(curUrl.indexOf("index")>-1){
+            $("#header_list .link-index").addClass("active");//首页
+          }else if(curUrl.indexOf("categories")>-1){
+            $("#header_list .link-categories").addClass("active");//分类
+          }else if(curUrl.indexOf("archives")>-1){
+            $("#header_list .link-archives").addClass("active");//归档
+          }else if(curUrl.indexOf("tags")>-1){
+            $("#header_list .link-tags").addClass("active");//标签
+          }else if(curUrl.indexOf("about")>-1){
+            $("#header_list .link-about").addClass("active");//关于
+          }else if(curUrl.indexOf("search")>-1){
+            $("#header_list .link-search").addClass("active");//搜索
+          }else{
+            $("#header_list .link-index").addClass("active");//首页
+          }
+
+        });
+
+      });
+    </script>
+    {% include analytics.html %}
+  </body>
+</html>

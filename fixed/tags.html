@@ -1,0 +1,35 @@
+---
+layout: default
+title: 标签 | Fli's Blog
+---
+<!--page tags-->
+<div class="page-tags">
+    <div class="tag-all-title">
+        目前共计{{ site.tags.size }}个标签
+    </div>
+    <div class="tag-tree clearfix">
+        {% for tag in site.tags %}
+        <a href="#tag-{{ tag[0] }}" class="tree-tag">
+            {{ tag[0] }}<sup>{{ tag[1].size }}</sup>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="tag-tree-node">
+        {% for tag in site.tags %}
+        {% if tag[0] != site.tags.first[0] %}
+        {% endif %}
+        <h2 id="tag-{{ tag[0] }}" class="node-title">{{ tag[0] }}</h2>
+        <ul class="tag-list">
+            {% for post in tag[1] %}
+            {% if post != tag[1].first %}
+            {% endif %}
+
+            <li class="tag-list-item">
+                <span class="date">{{post.date | date:"%d/%m/%Y"}}</span>
+                <a href="{{post.url}}">{{post.title}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </div>
+</div>
